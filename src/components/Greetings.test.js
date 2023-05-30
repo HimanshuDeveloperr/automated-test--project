@@ -14,4 +14,11 @@ describe("Greetings Components",()=>{
         const text=screen.getByText("Hello World!")
         expect(text).toBeInTheDocument()
     })
+
+    test("render button is not clicked",()=>{
+        render(<Greetings/>)
+
+        const notClicked=screen.getByText("false",{exact:false})
+        expect(notClicked).toBeInTheDocument()
+    })
 })
