@@ -33,4 +33,15 @@ describe("Greetings Components",()=>{
     
         expect(element).toBeInTheDocument();
       });
+
+      test('renders button and checks if "false" is not present', () => {
+        render(<Greetings />);
+    
+        const buttonElement = screen.getByRole('button');
+        userEvent.click(buttonElement);
+    
+        const elementTwo = screen.queryByText("false");
+    
+        expect(elementTwo).toBeNull()
+      });
 })
