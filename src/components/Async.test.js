@@ -1,16 +1,17 @@
-import {render,screen} from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
-import Async from "./Async"
+// Async.test.js
+import { render, screen } from '@testing-library/react';
+import Async from './Async';
 
+describe('Async component', () => {
+  test('renders list items after fetching data', async () => {
+    window.fetch = jest.fn();
+    window.fetch.mockResolvedValueOnce({
+      json: async () => [{ id: 'p1', title: 'first post' }],
+    });
 
+    render(<Async />);
 
-describe("Async components",()=>{
-
-    test("async functionality test",async()=>{
-
-        render(<Async/>)
-
-        const items=await screen.findAllByRole("listitem")
-        expect(items).not.toHaveLength(0)
-    })
-})
+    const items = await screen.findAllByRole('listitem');
+    expect(items).not.toHaveLength(0);
+  });
+});
