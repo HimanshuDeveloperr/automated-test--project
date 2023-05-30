@@ -1,5 +1,6 @@
 import {render,screen} from "@testing-library/react"
 import Greetings from "./Greetings"
+import userEvent from "@testing-library/user-event"
 
 describe("Greetings Components",()=>{
 
@@ -21,4 +22,15 @@ describe("Greetings Components",()=>{
         const notClicked=screen.getByText("false",{exact:false})
         expect(notClicked).toBeInTheDocument()
     })
+
+    test('renders button and checks if "true" is present', () => {
+        render(<Greetings />);
+    
+        const buttonElement = screen.getByRole('button');
+        userEvent.click(buttonElement);
+    
+        const element = screen.queryByText("true");
+    
+        expect(element).toBeInTheDocument();
+      });
 })

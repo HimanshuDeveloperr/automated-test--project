@@ -9,9 +9,9 @@ const Greetings = () => {
   return (
     <div>
         <h1>Hello World!</h1>
-        {clicked && <p>true</p>}
         {!clicked && <p>false</p>} 
-        <button onclick={clickHandler}>clicked!</button>
+        {clicked && <h2>true</h2>}
+        <button onClick={clickHandler}>clicked!</button>
     </div>
   )
 }
